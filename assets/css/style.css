@@ -1,0 +1,70 @@
+* {
+    box-sizing: border-box;
+}
+h1{
+    color: pink;
+}
+.jumbotron{
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 15px;
+    background: none;
+    height: 100px;
+   
+}
+.title-text {
+    vertical-align: top;
+    position: absolute;
+    top: 25px;
+    Left: 38%;
+
+}
+
+.card {
+    height: 150px;
+    width: 150px;
+}
+
+img {
+    height: 150px;
+    width: 150px;
+}
+
+h6 {
+    color: #ccc;
+    font-size: 15px;
+    text-align: center;
+}
+
+.row{
+    margin-bottom: 40px;
+}
+
+.card img{
+    
+    position: relative;
+}
+
+.card-text {
+    
+    position: absolute;
+    left: 45px;
+    bottom: 10px;
+}
+
+#redCorner img {
+    height: 300px;
+    width: 300px;
+    margin-right: 25px;
+
+}
+
+#blueCorner img{
+    height: 300px;
+    width: 300px;
+    margin-left: 25px;
+}
+
+button {
+    margin-top: 125px;
+}
