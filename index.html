@@ -6,106 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="assets/css/reset.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
     <title>Naval Battle RPG</title>
 </head>
 
 <body>
     <div class="container">
-        <div class="row" id="title">
-            <div class="jumbotron container-fluid">
-                <div class="container">
-                    <h1 class="title-text">Naval Battle RPG</h1>
-                    <h4 class="selector-text">Select your character</h4>
-                </div>
+        <div class="title-row" id="title">
+            <!--jumbotron code went below here-->
+            <h1>Naval Battle RPG</h1>
+        </div>
+
+        <div class="row" id="selector-row">
+            <div class="col-lg-12" id="selector-text">
+                <h4 class="selector-text">Select your <span class="switch-actor">character</span></h4>
             </div>
         </div>
-        <div class="row" id="charImages">
-            <div class="col-lg-3" id="sub">
-                <div class="card">
-                    <img src="assets/images/submarine.jpg" class="card-img-top" alt="Submarine">
-                    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-                        <h6 class="card-text">Submarine</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3" id="carrier">
-                <div class="card">
-                    <img src="assets/images/carrier.jpg" class="card-img-top" alt="Aircraft Carrier">
-                    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-                        <h6 class="card-text">Carrier</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3" id="frigate">
-                <div class="card">
-                    <img src="assets/images/frigate.jpg" class="card-img-top" alt="Fast Frigate">
-                    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-                        <h6 class="card-text">Fast Frigate</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3" id="b-ship">
-                <div class="card">
-                    <img src="assets/images/battleship.jpeg" class="card-img-top" alt="Battleship">
-                    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-                        <h6 class="card-text">Battleship</h6>
-                    </div>
-                </div>
-            </div>
+        <!--HTML Body below Jumbotron-->
+        <div id="piers-section">
+
         </div>
-        <div class="row" id="bench">
-            <div class="col-lg-9" id="emptyBench">
+
+    </div>
+    <div id="enemy-arena">
+
+
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <div id="hero-arena">
 
 
             </div>
-            <div class="col-lg-3" id="bench1">
-                
-            </div>
         </div>
-        <div class="row" id="arena">
-            <div class="col-lg-5" id="blueCorner">
-                <div class="card">
-                    <img src="assets/images/battleship.jpeg" class="card-img-top" alt="Battleship">
-                    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-                        <h6 class="card-text">Battleship</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2" id="attack">
+        <div class="col-lg-4">
+            <div id="attack">
                 <div class=button-center style="width:350px;" align:"center">
                     <button type="button" class="btn btn-outline-danger">Attack</button>
                 </div>
             </div>
-            <div class="col-lg-5" id="redCorner">
-                <div class="card">
-                    <img src="assets/images/frigate.jpg" class="card-img-top" alt="Submarine">
-                    <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-                        <h6 class="card-text">Frigate</h6>
-                    </div>
-                </div>
+        </div>
+        <div class="col-lg-4">
+            <div id="defender-arena">
+
             </div>
         </div>
-        <div class="row" id="bench">
-            <div class="col-lg-9" id="emptyBench">
+    </div>
+    
+    </div>
 
-            </div>
-            <div class="col-lg-3" id="bench2">
-                
+    <div class="row" id="bench">
+        <div class="col-lg-9" id="emptyBench">
 
-            </div>
-
-
-
+        </div>
+        <div class="col-lg-3" id="bench2">
 
 
-
+        </div>
 
 
 
-            <script src="assets/javascript/game.js"></script>
+
+
+
+
+
+
+        <script src="assets/javascript/game.js"></script>
 </body>
 
 </html>
