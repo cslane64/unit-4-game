@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var vessels = {
+    var vessel = {
         "Submarine": {
             name: "Submarine",
             healthPoints: 150,
@@ -35,7 +35,7 @@ $(document).ready(function() {
     var villan;
     var enemies = [];
     var opponent;
-
+// This will render the objects for each vessel to the page
 var renderOne = function (vessels, renderArea, vesStatus) {
     var vesDiv = $("<div class='vessels' data-name='" + vessels.name + "'>");
     var vesName = $("<div class='vessels-name'>").text(vessels.name);
@@ -44,11 +44,13 @@ var renderOne = function (vessels, renderArea, vesStatus) {
     vesDiv.append(vesName).append(vesImage).append(vesHealth);
     $(renderArea).append(vesDiv);
 
+//adds a class based on the status of the vessel
     if (vesStatus === "enemy") {
         $(vesDiv).addClass("enemy");
     }
     else if (vesStatus === "defender") {
-        Opponent = character
+        Opponent = vessels;
+        console.log(opponent);
         $(vesDiv).addClass("opponent");
 
     }
@@ -68,25 +70,34 @@ var displayVessels = function(charObj, areaRender) {
     }
     if (areaRender === "#enemy-arena") {
         for (i=0; i < charObj.length; i++)
-        renderOne(charObj[i], "#enemy-arena", "enemy");
+        renderOne(charObj[i], areaRender, "enemy");
     } 
+    
 
 $(document).on("click", ".enemy", function() {
-    var name = $(this).attr("data-name");
-
+    var name = ($(this).attr("data-name"));
+    //alert("Handler for enemy on click called");
+   
+    
     if($("#defender-arena").children().length === 0) {
+        console.log("this is true");
         displayVessels(name, "#defender-arena");
+        console.log((this) + name);
         $(this).hide();
+        
     }
-
     if (areaRender === "#defender-arena") {
+        console.log("First if statement is true")
         $(areaRender).empty();
-        for (i=0; i < charObj.length; i++) {
+        for (i=0; i < enemies.length; i++) {
             if(enemies[i].name === charObj) {
-        renderOne(charObj[i], areaRender, "defender");
+                console.log("Second if statement is true")
+        renderOne(enemies[i], areaRender, "defender");
+            } else {
+                console.log("FUCK IT");
             }
         }
-    } 
+    }     
 
 });
     
@@ -94,30 +105,32 @@ $(document).on("click", ".enemy", function() {
 
 
 
-displayVessels(vessels, "#piers-section");
+displayVessels(vessel, "#piers-section");
 
 $(document).on("click", ".vessels", function(){
     var name = $(this).attr("data-name");
+    
+
 
    
-    console.log (hero);
+    // console.log (name);
 
     if (!hero){
-        hero = vessels[name];
-       for (var key in vessels) {
+        hero = vessel[name];
+       for (var key in vessel) {
             if (key !== name) {
-                enemies.push(vessels[key]);
+                enemies.push(vessel[key]);
             } 
        }
        
     } 
-    console.log(enemies);
+    //console.log(enemies);
 
     $("#piers-section").hide()
 
     displayVessels(hero, "#hero-arena");
     displayVessels(enemies, "#enemy-arena");
-
+    
 
 })
 });
