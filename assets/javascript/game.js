@@ -56,29 +56,28 @@ var renderOne = function (vessels, renderArea, vesStatus) {
     }
 };
 
-var displayVessels = function(charObj, areaRender) {
+var displayVessels = function(vesObj, areaRender) {
     if (areaRender === "#piers-section") {
         $(areaRender).empty();
-        for (var key in charObj) {
-            if(charObj.hasOwnProperty(key)) {
-                renderOne(charObj[key], areaRender, "");
+        for (var key in vesObj) {
+            if(vesObj.hasOwnProperty(key)) {
+                renderOne(vesObj[key], areaRender, "");
             }
         }
     }
     if (areaRender === "#hero-arena") {
-        renderOne(charObj, areaRender, "");
+        renderOne(vesObj, areaRender, "");
     }
     if (areaRender === "#enemy-arena") {
-        for (i=0; i < charObj.length; i++)
-        renderOne(charObj[i], areaRender, "enemy");
+        for (i=0; i < vesObj.length; i++)
+        renderOne(vesObj[i], areaRender, "enemy");
     } 
     
 
-$(document).on("click", ".enemy", function() {
+$('.enemy').on("click", function() {
     var name = ($(this).attr("data-name"));
-    //alert("Handler for enemy on click called");
-   
-    
+    areaRender = "#defender-arena";
+    var text = areaRender;
     if($("#defender-arena").children().length === 0) {
         console.log("this is true");
         displayVessels(name, "#defender-arena");
@@ -89,15 +88,25 @@ $(document).on("click", ".enemy", function() {
     if (areaRender === "#defender-arena") {
         console.log("First if statement is true")
         $(areaRender).empty();
-        for (i=0; i < enemies.length; i++) {
-            if(enemies[i].name === charObj) {
+        console.log(text);
+        console.log(enemies);
+        for (var key in vesObj)
+        console.log(vesObj[i]); {
+            if(vesObj.hasOwnProperty(key)) {
+                renderOne(vesObj[key], areaRender, "opponent");
                 console.log("Second if statement is true")
-        renderOne(enemies[i], areaRender, "defender");
-            } else {
-                console.log("This works");
+        
+            }
+                
+                
+             else {
+                console.log("For Loop has no match???");
             }
         }
     }     
+
+    
+    
 
 });
     
@@ -107,12 +116,9 @@ $(document).on("click", ".enemy", function() {
 
 displayVessels(vessel, "#piers-section");
 
-$(document).on("click", ".vessels", function(){
+$('.vessels').on("click", function(){
     var name = $(this).attr("data-name");
     
-
-
-   
     // console.log (name);
 
     if (!hero){

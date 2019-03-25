@@ -49,11 +49,23 @@ img {
 #hero-arena img {
     height: 200px;
     width: 300px;
-
+    
 }
 
 #defender-arena{
     background-color: lightblue;
+    margin: 65px 0 0 0;
+}
+
+#defender-arena img {
+    height: 200px;
+    width: 300px;
+    
+}
+
+.btn {
+    margin-top: 160px;
+    margin-left: 60px; 
 }
 
 h6 {
