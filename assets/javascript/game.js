@@ -94,7 +94,7 @@ $(document).on("click", ".enemy", function() {
                 console.log("Second if statement is true")
         renderOne(enemies[i], areaRender, "defender");
             } else {
-                console.log("FUCK IT");
+                console.log("This works");
             }
         }
     }     
