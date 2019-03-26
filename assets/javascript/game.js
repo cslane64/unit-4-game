@@ -30,11 +30,12 @@ $(document).ready(function() {
         }
 
     };
-    
-    var hero;
-    var villan;
+    var wins;
+    var heroSelected;
     var enemies = [];
-    var opponent;
+    var enemySelected;
+    var attackCount;
+    //var opponent; 
 // This will render the objects for each vessel to the page
 var renderOne = function (vessels, renderArea, vesStatus) {
     var vesDiv = $("<div class='vessels' data-name='" + vessels.name + "'>");
@@ -48,12 +49,11 @@ var renderOne = function (vessels, renderArea, vesStatus) {
     if (vesStatus === "enemy") {
         $(vesDiv).addClass("enemy");
     }
-    else if (vesStatus === "defender") {
-        Opponent = vessels;
-        console.log(opponent);
+    else if (vesStatus === "opponent") {
+        var enemySelected = vessels;
         $(vesDiv).addClass("opponent");
-
     }
+    console.log(enemySelected);
 };
 
 var displayVessels = function(vesObj, areaRender) {
@@ -76,53 +76,65 @@ var displayVessels = function(vesObj, areaRender) {
 
 $('.enemy').on("click", function() {
     var name = ($(this).attr("data-name"));
-    areaRender = "#defender-arena";
-    var text = areaRender;
+    enemySelected = name;
+    console.log(enemySelected.healthPoints);
+      areaRender = "#defender-arena";
     if($("#defender-arena").children().length === 0) {
-        console.log("this is true");
-        displayVessels(name, "#defender-arena");
-        console.log((this) + name);
+        console.log("1st if works")
+        displayVessels(enemySelected, "#defender-arena");
         $(this).hide();
-        
     }
     if (areaRender === "#defender-arena") {
-        console.log("First if statement is true")
         $(areaRender).empty();
-        console.log(text);
-        console.log(enemies);
-        for (var key in vesObj)
-        console.log(vesObj[i]); {
-            if(vesObj.hasOwnProperty(key)) {
-                renderOne(vesObj[key], areaRender, "opponent");
-                console.log("Second if statement is true")
-        
-            }
-                
-                
-             else {
-                console.log("For Loop has no match???");
+        for (var i = 0; i < enemies.length; i++){
+            if (enemies[i].name === vesObj) {
+                //console.log(vesObj);
+                renderOne(enemies[i], areaRender, "opponent");
             }
         }
+
+        /*for (var key in vesObj);
+        { if (vesObj.hasOwnProperty(key)) {
+            renderOne(vesObj[key], areaRender, "opponent");
+            console.log("Second if statement is true")
+        }
+        else {
+            console.log("For Loop has no match???");
+            }
+        }*/
     }     
 
-    
+    if (areaRender === "damage-by-player") {
+        $("#defender-arena").empty();
+        renderOne(vesObj, "#defender-arena", "opponent");
+
+    }
+    if (areaRender === "damage-by-enemy") {
+        $("#hero-arena").empty();
+        renderOne(vesObj, "#hero-arena", "");
+
+    }
+    if (areaRender === "Loser") {
+        $("#defender-arena").empty();
+    }
     
 
 });
     
 }
 
-
-
 displayVessels(vessel, "#piers-section");
 
 $('.vessels').on("click", function(){
     var name = $(this).attr("data-name");
+    console.log(enemySelected);
+    //vesSelect = name;
+    //console.log(vesSelect);
     
     // console.log (name);
 
-    if (!hero){
-        hero = vessel[name];
+    if (!heroSelected){
+        heroSelected = vessel[name];
        for (var key in vessel) {
             if (key !== name) {
                 enemies.push(vessel[key]);
@@ -134,21 +146,50 @@ $('.vessels').on("click", function(){
 
     $("#piers-section").hide()
 
-    displayVessels(hero, "#hero-arena");
+    displayVessels(heroSelected, "#hero-arena");
     displayVessels(enemies, "#enemy-arena");
+    displayVessels(enemySelected, "#opponent");
     
-
-})
+    
 });
+//});
 // attack button portion of the game
 
 $("#butt").on("click", function() {
-    alert("The button has been pushed");
+    console.log("button clicked")
+ 
+    if ($("#defender-arena").children().length !== 0) {
+        //console.log(enemySelected.keys(config))
+
+       (enemySelected.healthPoints) -= (heroSelected.attackPower * attackCount);
+        alert(enemySelected.healthPoints);
+       
+
+        if (enemySelected.healthPoints > 0){
+            displayVessels(enemySelected, "damage-by-player");
+
+            heroSelected.healthPoints -= enemySelected.counterAttack;
+
+            displayVessels(heroSelected, "damage-by-enemy");
+
+        }
+    }
+
+    else {
+
+        displayVessels(enemySelected, "Loser");
+        wins++;
+        if (wins >= 3){
+            alert("Winner Winner, Chicken Dinner");
+        }
+    }
+    attackCount++;
 
     // Get the health points for the hero and place in a variable
-
+    //heroHealth = $("#vessel-health").text();
+    //console.log(heroHealth)
     // Get the health points from the opponent and place in a variable
-    oppHealth = $("#vessel.health").text("")
+    //oppHealth = $("#vessel.health").text("")
 
     //check to be sure that the opponent health points are > 0
 
@@ -175,4 +216,7 @@ $("#butt").on("click", function() {
     
 
 
-})
+
+
+});
+});
