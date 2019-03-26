@@ -140,3 +140,39 @@ $('.vessels').on("click", function(){
 
 })
 });
+// attack button portion of the game
+
+$("#butt").on("click", function() {
+    alert("The button has been pushed");
+
+    // Get the health points for the hero and place in a variable
+
+    // Get the health points from the opponent and place in a variable
+    oppHealth = $("#vessel.health").text("")
+
+    //check to be sure that the opponent health points are > 0
+
+    // Begin attack
+ 
+    // subtract hero attack points from opponents health points
+
+    // subtract opponents counter-attack points from hero's health points
+
+    // add base points to hero's attack points
+
+    // check hero health points are > 0 update screen health point  variabes $ displays
+
+    // If hero points < 0 the display a message that YOU LOST
+
+    // check that opponent health points are > 0 update health points variables & display
+
+    // if opponent points are < 0 then display "You defeated opponent" 
+
+    // Select new opponent
+
+
+
+    
+
+
+})
